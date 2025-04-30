@@ -1,0 +1,21 @@
+.MODEL SMALL 
+.STACK 100H
+.DATA
+.CODE
+
+MAIN PROC
+    MOV AH, 1; INPUT
+    INT 21H  ; CALL DOS SERVICE
+    MOV BL,AL
+                
+    
+               
+    MOV AH,2
+    MOV DL, BL ;OUTPUT  
+    INT 21H
+    
+    MOV AH,4CH ; TERMINATE PROGRAM
+    INT 21H
+    
+    MAIN ENDP
+END MAIN
