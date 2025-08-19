@@ -1,33 +1,37 @@
+.MODEL SMALL
+.STACK 100H
+.DATA
+RESULT DW ?
 
+.CODE
+MAIN PROC
+    MOV AX, 1
+    MOV CX, 1
+    INC CX
+    MUL CX
+    INC CX
+    MUL CX
+    INC CX
+    MUL CX
+    INC CX
+    MUL CX
+    MOV SI, AX
 
+    MOV AX, 1
+    MOV CX, 1
+    INC CX
+    MUL CX
+    INC CX
+    MUL CX
+    MOV DI, AX
 
-org 100h
+    MOV AX, SI
+    SUB AX, 7
+    CWD
+    IDIV DI
+    MOV RESULT, AX
 
-  MOV R1, 1
-  MOV R2, 1
-
-  MOV A, 1
-  INC A
-  MUL R1, A
-  INC A
-  MUL R1, A
-  INC A
-  MUL R1, A
-  INC A
-  MUL R1, A
-  MOV B, 1
-  INC B
-  MUL R2, B
-  INC B
-  MUL R2, B   
-  MOV R3, R1
-  SUB R3, 7
-  DIV R3, R2
-
-  MOV RESULT, R3
-
-ret
-
-
-
-
+    MOV AH, 4CH
+    INT 21H
+MAIN ENDP
+END MAIN
